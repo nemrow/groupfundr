@@ -21,3 +21,7 @@ end
 When(/^show page$/) do 
   save_and_open_page
 end
+
+Given(/^I am logged in as an existing user$/) do
+  login_as_existing_user
+end
