@@ -2,6 +2,7 @@
   <%= "Hello #{current_user.first_name}" %>
   <%= link_to 'Sign Out', sign_out_path %>
   <%= link_to 'New Campaign', new_campaign_path %>
+  <%= link_to 'My Campaigns', user_campaigns_path(current_user) %>
 <% else %>
   <%= link_to 'Sign Up', sign_up_path %>
   <%= link_to 'Sign In', sign_in_path %>

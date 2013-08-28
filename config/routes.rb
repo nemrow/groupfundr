@@ -7,7 +7,11 @@ Groupfundr::Application.routes.draw do
   get 'sign_in', :to => 'sessions#new'
   get 'sign_out', :to => 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    resources :campaigns, :only => [:index]
+  end
   resources :sessions, :only => [:create, :destroy]
-  resources :campaigns
+  resources :campaigns do
+    resources :invites, :only => [:create]
+  end
 end

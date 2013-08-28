@@ -16,8 +16,25 @@ class CampaignsController < ApplicationController
   def show
     if @campaign = Campaign.find(params[:id])
       @notice = params[:notice] if params[:notice]
+      @error = params[:error] if params[:error]
+      if current_user = @campaign.owner
+        @user_role = 'owner'
+        @invite = Invite.new
+        @invited = @campaign.invites
+        # render owner data
+      elsif @campaign.participants.includes?(current_user)
+        @user_role = 'participant'
+        # render participant data
+      else
+        # redirect to public campaign site with permissions error
+      end
     else
       redirect_to root_path(:error => "We could not find that campaign")
     end
+  end
+
+  def index
+    @owned_campaigns = current_user.owned_campaigns
+    @joined_campaigns = current_user.joined_campaigns
   end
 end

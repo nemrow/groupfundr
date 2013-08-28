@@ -5,13 +5,16 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:user][:email])
+    if user = User.find_by_email(params[:user][:email])
       if user.authenticate(params[:user][:password])
         set_current_user(user)
         redirect_to user_path(user)
       else
-        redirect_to sign_in_path(:error => "could not log in")
+        redirect_to sign_in_path(:error => 'Incorrect Password')
       end
+    else
+      redirect_to sign_in_path(:error => 'Incorrect Email')
+    end
   end
 
   def destroy

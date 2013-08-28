@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827175838) do
+ActiveRecord::Schema.define(:version => 20130828174228) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20130827175838) do
     t.integer  "owner_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "invites", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "campaign_id"
+    t.string   "token"
+    t.text     "message"
+    t.boolean  "expired"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "user_joined_campaigns", :force => true do |t|

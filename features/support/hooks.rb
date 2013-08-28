@@ -5,3 +5,11 @@ Before('@blank_user') do
                         :password => 'password'
                       )
 end
+
+Before('@campaign_owner') do
+  @campaign = Campaign.create(  :name => 'My First Campaign',
+                                :description => 'My first description',
+                                :deadline => Time.now + 30.days
+                              )
+  @user.owned_campaigns << @campaign
+end

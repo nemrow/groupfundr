@@ -1,0 +1,9 @@
+<h1>My Campaigns</h1>
+<h2>Campaigns I Own</h2>
+<% @owned_campaigns.each do |campaign| %>
+  <%= link_to campaign.name, campaign_path(campaign) %>
+<% end %>
+<h2>Campaigns I Joined</h2>
+<% @joined_campaigns.each do |campaign| %>
+  <%= link_to campaign.name, campaign_path(campaign) %>
+<% end %>
