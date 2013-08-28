@@ -1,0 +1,8 @@
+<h1>New Campaign</h1>
+<%= form_for @campaign do |f| %>
+  <%= f.text_field 'name', :placeholder => 'Campaign Name' %>
+  <%= f.text_field 'description', :placeholder => 'Description' %>
+  <%= f.text_field 'deadline', :placeholder => 'Deadline' %>  
+  <%= f.submit 'Start Campaign' %>
+<% end %>
+

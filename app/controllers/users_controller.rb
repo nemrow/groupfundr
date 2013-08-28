@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(params[:user])
     if user.save
+      set_current_user(user)
       redirect_to user_path(user, :notice => "Welcome to Groupfundr #{user.first_name}!")
     else
       redirect_to new_user_path(:error => "There was an error signing up")

@@ -1,4 +1,6 @@
 Groupfundr::Application.routes.draw do
+  get "campaigns/new"
+
   root :to => 'welcome#index'
 
   get 'sign_up', :to => 'users#new'
@@ -7,4 +9,5 @@ Groupfundr::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:create, :destroy]
+  resources :campaigns
 end

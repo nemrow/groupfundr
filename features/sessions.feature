@@ -22,6 +22,6 @@ Feature: Login / Logout
 
   @blank_user
   Scenario: Signing Out
-    Given I am logged in as an existing user
+    Given I am logged in as an existing blank user
     When I click the 'Sign Out' link
     Then the page should show 'Sign In'
