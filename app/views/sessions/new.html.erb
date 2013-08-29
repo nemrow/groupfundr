@@ -1,6 +1,12 @@
 <h1>Sign In</h1>
 <%= form_for @user, :url => sessions_path do |f| %>
   <%= f.text_field 'email', :placeholder => 'Email' %>
-  <%= f.password_field 'password', :placeholder => 'Password' %> 
+  <%= f.password_field 'password', :placeholder => 'Password' %>
+  <% if @invited_params %>
+    <%= fields_for 'invited' do |inv| %> 
+      <%= inv.hidden_field 'id', :value => @invited_params[:invite_id] %>
+      <%= inv.hidden_field 'token', :value => @invited_params[:token] %>
+    <% end %>
+  <% end %>
   <%= f.submit 'Sign In' %> 
 <% end %>

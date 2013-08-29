@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.0.0'
+  gem "rest-client", "~> 1.6.7"
 end
 
 group :development, :test do 

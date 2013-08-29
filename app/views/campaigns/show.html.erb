@@ -13,7 +13,7 @@
       <tr>
         <td><%= invite.name %></td>
         <td><%= invite.email %></td>
-        <td>no</td>
+        <td><%= invite.expired ? 'Yes' : 'No' %></td>
       </tr>
     <% end %>
   </table>

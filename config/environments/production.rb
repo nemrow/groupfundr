@@ -64,4 +64,7 @@ Groupfundr::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  
+  MAILGUN_KEY = 'key-23ezh9pbiy0mzlqx5dmboge3r-26lzk3'
+  MAILGUN_URL = 'https://api:#{api_key}@api.mailgun.net/v2/nemrow.mailgun.org'
 end

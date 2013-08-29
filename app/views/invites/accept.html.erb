@@ -1,0 +1,4 @@
+<h1>Please Login or Sign Up to Finish</h1>
+
+<%= link_to 'New User', sign_up_path(:invite_id => @invite.id, :token => @invite.token) %>
+<%= link_to 'Exisiting User', sign_in_path(:invite_id => @invite.id, :token => @invite.token) %>
