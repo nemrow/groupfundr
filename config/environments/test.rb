@@ -34,4 +34,7 @@ Groupfundr::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  app_environment_variables = File.join(Rails.root, 'config', 'app_environment_variables.rb')
+  load(app_environment_variables) if File.exists?(app_environment_variables)
 end

@@ -1,5 +1,6 @@
 Given(/^I am not a current user$/) do
-  page.should_not have_content("Hello Jordan")
+  visit root_path
+  page.should have_content("Sign In")
 end
 
 When(/^I click the '(.*)' link$/) do |value|

@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
   has_many :joined_campaigns, :through => :user_joined_campaigns, :source => :campaign
   has_many :user_joined_campaigns
 
+  validates :email, :uniqueness => true, :presence => true
+
   has_secure_password
 end
