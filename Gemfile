@@ -20,6 +20,7 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'seedbank', github: 'james2m/seedbank'
 end
 
 gem 'jquery-rails'

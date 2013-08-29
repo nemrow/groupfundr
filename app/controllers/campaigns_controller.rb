@@ -17,12 +17,12 @@ class CampaignsController < ApplicationController
     if @campaign = Campaign.find(params[:id])
       @notice = params[:notice] if params[:notice]
       @error = params[:error] if params[:error]
-      if current_user = @campaign.owner
+      if current_user == @campaign.owner
         @user_role = 'owner'
         @invite = Invite.new
         @invited = @campaign.invites
         # render owner data
-      elsif @campaign.participants.includes?(current_user)
+      elsif current_user && @campaign.participants.map{ |parti| parti.id }.include?(current_user.id)
         @user_role = 'participant'
         # render participant data
       else

@@ -1,29 +1,9 @@
 <h1><%= @campaign.name %></h1>
 
 <% if @user_role == 'owner' %>
-  
-  <h3>Already Invited</h3>
-  <table>
-    <thead>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Confirmed?</th>
-    </thead>
-    <% @invited.each do |invite| %>
-      <tr>
-        <td><%= invite.name %></td>
-        <td><%= invite.email %></td>
-        <td><%= invite.expired ? 'Yes' : 'No' %></td>
-      </tr>
-    <% end %>
-  </table>
- 
-  <%= form_for @invite, :url => campaign_invites_path(@campaign) do |f| %>
-    <%= f.text_field 'name', :placeholder => 'Participants Name' %>
-    <%= f.text_field 'email', :placeholder => 'Participants Email' %>
-    <%= f.submit 'Send Invite' %>
-  <% end %>
-
+  <%= render :partial => 'campaigns/owner_view' %>
 <% elsif @user_role == 'participant' %>
-
+  <%= render :partial => 'campaigns/participant_view' %>
+<% else %>
+  <%= render :partial => 'campaigns/public_view' %>
 <% end %>

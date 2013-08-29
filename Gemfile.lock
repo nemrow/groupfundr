@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/james2m/seedbank.git
+  revision: c7a272751336f0d17103028f45b88eac62cbedd7
+  specs:
+    seedbank (0.3.0.pre2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -179,6 +185,7 @@ DEPENDENCIES
   rest-client (~> 1.6.7)
   rspec-rails
   sass-rails (~> 3.2.3)
+  seedbank!
   shoulda-matchers
   uglifier (>= 1.0.3)
   zurb-foundation (~> 4.0.0)
