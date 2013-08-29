@@ -3,13 +3,7 @@ class InvitesController < ApplicationController
     campaign = Campaign.find(params[:campaign_id])
     invite = Invite.new(params[:invite])
     if invite.save
-      if Mailgun.send_invite(invite)
-        campaign.invites << invite
-        redirect_to campaign_path(campaign, :notice => "Invite to #{invite.name} sent successfully")
-      else
-        invite.destroy
-        redirect_to campaign_path(campaign, :error => "Could not email that person. Another email?") 
-      end
+      mail_sent_conditional(campaign, invite)
     else
       redirect_to campaign_path(campaign, :error => "Could not send invite to #{invite.name}.")      
     end
@@ -33,7 +27,18 @@ class InvitesController < ApplicationController
         redirect_to user_campaigns_path(current_user)
       end
     else
-
+      redirect_to root_path(:error => "Your token does not match this invitation!")
     end 
+  end
+
+  protected
+  def mail_sent_conditional(campaign, invite)
+    if Mailgun.send_invite(invite)
+      campaign.invites << invite
+      redirect_to campaign_path(campaign, :notice => "Invite to #{invite.name} sent successfully")
+    else
+      invite.destroy
+      redirect_to campaign_path(campaign, :error => "Could not email that person. Another email?") 
+    end
   end
 end

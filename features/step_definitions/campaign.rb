@@ -6,7 +6,7 @@ When(/^click the 'Start Campaign' button$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Given(/^I am not logged in as an existing campaign manager$/) do
+Given(/^I am not logged in as an existing user$/) do
   visit root_path
   page.should have_content('Sign In')
 end
