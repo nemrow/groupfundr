@@ -26,7 +26,7 @@ class Invite < ActiveRecord::Base
   end
 
   def self.set_campaign_to_user(invited_hash, user)
-    invite = Invite.find(invited_hash['id'])
+    invite = Invite.find(invited_hash['invite_id'])
     if invite.token == invited_hash['token']
       user.joined_campaigns << invite.campaign
       invite.update_attributes(:expired => true)
